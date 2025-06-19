@@ -1,11 +1,42 @@
 const express = require("express");
 const morgan = require('morgan')
+const mongoose = require('mongoose')
 const cors = require('cors')
 const app = express();
 app.use(express.static('dist'))
 app.use(express.json());
+const Contact = require('./mongo')
+
+const Name = process.argv[3]
+
+const Number = process.argv[4]
+
 // const contentLogger = morgan('tiny')
+const savingContact = ()=>{
+  const contact = new Contact({
+    id:String(Math.floor(Math.random()*1e11)),
+    name:Name,
+    number:Number,
+  })
+  contact.save().then(()=>{
+    console.log('contact saved!')
+    mongoose.connection.close()
+  })
+}
+if(process.argv.length === 5){
+  savingContact()
+}
+else if(process.argv.length === 3){
+  Contact.find({}).then(result =>{
+    result.forEach(contact => {
+      console.log(contact)
+    });
+  }).then(()=>{
+    mongoose.connection.close()
+  })
+}
 app.use(cors())
+
 morgan.token('body',(request,response)=>{
     console.log(request.body)
     return JSON.stringify(request.body);

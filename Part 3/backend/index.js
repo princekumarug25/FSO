@@ -4,7 +4,6 @@ const cors = require('cors')
 const app = express();
 app.use(express.static('dist'))
 app.use(express.json());
-// const contentLogger = morgan('tiny')
 app.use(cors())
 morgan.token('body',(request,response)=>{
     console.log(request.body)
@@ -110,5 +109,5 @@ app.post('/api/persons', contentLogger ,(request,response)=>{
     response.json(contact)
 })
 
-const PORT = 3001;
+const PORT = 3002;
 app.listen(PORT);
