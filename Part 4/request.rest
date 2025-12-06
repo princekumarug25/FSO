@@ -1,0 +1,51 @@
+GET http://localhost:3003/api/blogs/
+
+###
+POST http://localhost:3003/api/blogs/
+content-type: application/json
+
+{
+    "title": "Another Sample",
+    "author": "Prince Kumar",
+    "url": "The URL",
+    "likes" : 2,
+    "User":"69327086905c5e2f2e6dcebb"
+}
+###
+PUT http://localhost:3003/api/blogs/5a422ba71b54a676234d17fb
+content-type: application/json
+
+{
+    "title": "Another Sample",
+    "author": "Prince Kumar",
+    "url": "The URL",
+    "likes" : 2
+}
+
+###
+DELETE  http://localhost:3003/api/blogs/5a422ba71b54a676234d17fb
+content-type: application/json
+
+{
+    "title": "Another Sample",
+    "author": "Prince Kumar",
+    "url": "The URL",
+    "likes" : 2
+}
+###
+POST http://localhost:3003/api/users/
+content-type: application/json
+
+{
+    "name": "asdfajhk",
+    "username": "prcekumarug25f",
+    "password" : "hjjh"
+}
+###
+POST http://localhost:3003/api/login/
+content-type: application/json
+
+{
+    "username": "prcekumarug25f",
+    "password" : "hjjh"
+}
